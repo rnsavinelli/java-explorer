@@ -1,4 +1,4 @@
-# Java Explorer Course
+# Java Explorer
 
 Java programming basics course.
 
