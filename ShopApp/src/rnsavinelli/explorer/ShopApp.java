@@ -15,7 +15,13 @@ public class ShopApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Welcome to rnsavinelli.explorer.ShopApp!");
+        String welcomeMessage = "Welcome to rnsavinelli.explorer.ShopApp";
+        
+        Customer c1 = new Customer();
+        
+        c1.name = "Pinky";
+        
+        System.out.println(welcomeMessage + " " + c1.name + "!");
     }
     
 }
