@@ -9,7 +9,8 @@ package rnsavinelli.explorer;
  *
  * @author rnsavinelli
  */
-public class Customer {
-    String name;
-    int age;
+public class Clothing {
+    String description;
+    double price;
+    String size = "M";
 }
