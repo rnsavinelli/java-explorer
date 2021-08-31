@@ -13,17 +13,20 @@ public class Customer {
     private String name;
     private int age;
     private String size;
+    private Clothing items[];
     
-    Customer(String name, int age, String size) {
+    Customer(String name, int age, String size, Clothing items[]) {
         this.setName(name);
         this.setAge(age);
         this.setSize(size);
+        this.addItems(items);
     }
 
-    Customer(String name, int age, int measurement) {
+    Customer(String name, int age, int measurement, Clothing items[]) {
         this.setName(name);
         this.setAge(age);
         this.setSize(measurement);
+        this.addItems(items);
     }
     
     public void setName(String name) {
@@ -80,4 +83,22 @@ public class Customer {
     public String getSize() {
         return this.size;
     }    
+    
+    public void addItems(Clothing items[]) {
+        this.items = items;
+    }
+    
+    public Clothing[] getItems() {
+        return this.items;
+    }
+    
+    public double getTotalClothingCost() {
+        double cost = 0.0;
+        
+        for (Clothing item: items) {
+            cost += item.getPrice();
+        }
+        
+        return cost;
+    }
 }

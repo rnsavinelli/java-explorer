@@ -12,7 +12,7 @@ package rnsavinelli.explorer;
 public class ShopApp {
     static String welcomeMessage = "Welcome to rnsavinelli.explorer.ShopApp!";    
 
-    private static void greet() {
+    private static void welcome() {
         System.out.println(welcomeMessage);
     }    
 
@@ -30,30 +30,18 @@ public class ShopApp {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        double total = 0.0;
-                
+    public static void main(String[] args) {                
         Customer customer = new Customer(
-            "Pinky", 25, 3
+            "Duke", 22, 4, getClothingItemList()
         );
-           
-        greet();
-                        
-        Clothing[] items = getClothingItemList();
 
+        welcome();
+        
         System.out.println("\nShopping Basket:");
-        for (Clothing item: items) {
+        for (Clothing item: customer.getItems()) {
             System.out.println(item.getDescription() + ", " + item.getPrice() + ", " + item.getSize());        
         }
         
-        for (int i = 0; i < items.length; i++) {
-            if (items[i].getSize().equals(customer.getSize())) {            
-                total += items[i].getPrice();
-            }
-        }
-        
-        System.out.println("\nTotal: " + total);
-        System.out.println("Important: Only the items of the costumer's size have been checked out.");
-
+        System.out.println("\nTotal: " + customer.getTotalClothingCost());
     }
 }
