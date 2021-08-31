@@ -42,7 +42,7 @@ public class ShopApp {
         
         return size;
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -59,15 +59,19 @@ public class ShopApp {
         
         System.out.println( "\nTax = " + tax + "\n");
         
-        Clothing item1 = new Clothing("Blue Jacket", 20.9, "M");
-        Clothing item2 = new Clothing("Orange T-Shirt", 10.5, "S");
+        Clothing item0 = new Clothing("Blue Jacket", 20.9, "M");
+        Clothing item1 = new Clothing("Orange T-Shirt", 10.5, "S");
         
-        int amountItem1 = 1, amountItem2 = 2;
+        int amountItem0 = 1, amountItem1 = 2;
         
-        System.out.println(amountItem1 + " x " + item1.description + ", " + item1.price + ", " + item1.size);
-        System.out.println(amountItem2 + " x " + item2.description + ", " + item2.price + ", " + item2.size + "\n");
+        Clothing[] items = {item0, item1};
         
-        totalPrice = amountItem1 * item1.price + amountItem2 * item2.price;
+        int[] amounts = {amountItem0, amountItem1};
+        
+        System.out.println(amounts[0] + " x " + items[0].description + ", " + items[0].price + ", " + items[0].size);
+        System.out.println(amounts[1] + " x " + items[1].description + ", " + items[1].price + ", " + items[1].size + "\n");
+        
+        totalPrice = amounts[0] * items[0].price + amounts[1] * items[1].price;
         finalPrice = totalPrice * (1 + tax);
         
         System.out.println("Total Price: " + totalPrice);        
