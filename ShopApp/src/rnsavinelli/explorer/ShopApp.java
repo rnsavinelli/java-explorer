@@ -48,9 +48,9 @@ public class ShopApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        double subtotal, taxes, total;          
-        int measurement = 3;
-        Customer c1 = new Customer("Pinky", 25, getCustomerSizeFromMeasurement(measurement));
+        double subtotal = 0.0, taxes = 0.0, total = 0.0;
+        
+        //Customer c1 = new Customer("Pinky", 25, getCustomerSizeFromMeasurement(3));
            
         greet();
                         
@@ -72,8 +72,16 @@ public class ShopApp {
             System.out.println(amounts[i] + " x " + items[i].description + ", " + items[i].price + ", " + items[i].size);
         }
         
-        subtotal = amounts[0] * items[0].price + amounts[1] * items[1].price;
-        taxes = subtotal * (tax);
+        //subtotal = amounts[0] * items[0].price + amounts[1] * items[1].price;
+        //taxes = subtotal * tax;
+        
+        for (int i = 0; i < items.length; i++) {
+            double itemSubtotal = amounts[i] * items[i].price;
+            
+            subtotal += itemSubtotal;
+            taxes += itemSubtotal * tax;
+        }
+        
         total = subtotal + taxes;
         
         System.out.println("\nSubtotal: " + subtotal);
@@ -81,5 +89,4 @@ public class ShopApp {
         System.out.println("------------------------");
         System.out.println("Total: " + total);
     }
-    
 }
