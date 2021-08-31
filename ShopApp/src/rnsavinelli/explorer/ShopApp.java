@@ -16,44 +16,15 @@ public class ShopApp {
     private static void greet() {
         System.out.println(welcomeMessage);
     }    
-    
-    private static String getCustomerSizeFromMeasurement(int measurement) {
-        String size;
-                
-        switch (measurement) {
-            case 1:
-            case 2:
-            case 3:
-                size = "S";
-                break;
-            case 4:
-            case 5:
-            case 6:
-                size = "M";
-                break;
-            case 7:
-            case 8:
-            case 9:
-                size = "L";
-                break;                
-            default:
-                size = "X";
-                break;
-        }
-        
-        return size;
-    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        double subtotal = 0.0, taxes = 0.0, total = 0.0;
-        
-        int measurement = 3;
-        
+        double total = 0.0;
+                
         Customer customer = new Customer(
-            "Pinky", 25, getCustomerSizeFromMeasurement(measurement)
+            "Pinky", 25, 3
         );
            
         greet();
@@ -67,7 +38,7 @@ public class ShopApp {
 
         System.out.println("\nBasket:");
         for (Clothing item: items) {
-            System.out.println(item.description + ", " + item.price + ", " + item.size);        
+            System.out.println(item.getDescription() + ", " + item.getPrice() + ", " + item.getSize());        
         }
 
         System.out.println("\nNotice:");
@@ -77,19 +48,11 @@ public class ShopApp {
         //taxes = subtotal * tax;
         
         for (int i = 0; i < items.length; i++) {
-            if (items[i].size.equals(customer.size)) {
-                double itemSubtotal = items[i].price;
-            
-                subtotal += itemSubtotal;
-                taxes += itemSubtotal * tax;
+            if (items[i].getSize().equals(customer.getSize())) {            
+                total += items[i].getPrice();
             }
         }
         
-        total = subtotal + taxes;
-       
-        System.out.println("\nSubtotal: " + subtotal);
-        System.out.println("Taxes: " + taxes);
-        System.out.println("------------------------");
-        System.out.println("Total: " + total);
+        System.out.println("\nTotal: " + total);
     }
 }
