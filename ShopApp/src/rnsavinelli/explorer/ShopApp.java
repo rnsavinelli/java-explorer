@@ -10,7 +10,11 @@ package rnsavinelli.explorer;
  * @author rnsavinelli
  */
 public class ShopApp {
-    final int MAX_CUSTOMERS = 50;
+    static String welcomeMessage = "Welcome to rnsavinelli.explorer.ShopApp!";    
+
+    private static void greet() {
+        System.out.println(welcomeMessage);
+    }    
     
     private static String getCustomerSizeFromMeasurement(int measurement) {
         String size;
@@ -43,17 +47,17 @@ public class ShopApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String welcomeMessage = "Welcome to rnsavinelli.explorer.ShopApp";
-        
         Customer c1 = new Customer("Pinky", 25, "S");
+        double totalPrice, finalPrice;        
+        double tax = 0.2;
+                
+        ///////////////////////////////////////////////////////////
         
-        System.out.println(welcomeMessage + " " + c1.name + "!\n");
+        greet();
         
         ///////////////////////////////////////////////////////////
         
-        double tax = 0.2, totalPrice, finalPrice;        
-        
-        System.out.println( "Tax = " + tax + "\n");
+        System.out.println( "\nTax = " + tax + "\n");
         
         Clothing item1 = new Clothing("Blue Jacket", 20.9, "M");
         Clothing item2 = new Clothing("Orange T-Shirt", 10.5, "S");
