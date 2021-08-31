@@ -13,4 +13,10 @@ public class Clothing {
     String description;
     double price;
     String size = "M";
+    
+    Clothing(String d, double p, String s) {
+        description = d;
+        price = p;
+        size = s;
+    }    
 }

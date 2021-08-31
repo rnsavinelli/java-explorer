@@ -12,4 +12,11 @@ package rnsavinelli.explorer;
 public class Customer {
     String name;
     int age;
+    String size;
+    
+    Customer(String n, int a, String s) {
+        name = n;
+        age = a;
+        size = s;
+    }    
 }
