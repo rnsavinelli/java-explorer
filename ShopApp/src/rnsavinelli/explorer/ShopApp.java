@@ -50,40 +50,51 @@ public class ShopApp {
     public static void main(String[] args) {
         double subtotal = 0.0, taxes = 0.0, total = 0.0;
         
-        //Customer c1 = new Customer("Pinky", 25, getCustomerSizeFromMeasurement(3));
+        int measurement = 3;
+        
+        Customer customer = new Customer(
+            "Pinky", 25, getCustomerSizeFromMeasurement(measurement)
+        );
            
         greet();
                         
         Clothing item0 = new Clothing("Blue Jacket", 20.9, "M");
         Clothing item1 = new Clothing("Orange T-Shirt", 10.5, "S");
-        
-        Clothing[] items = {item0, item1};
+        Clothing item2 = new Clothing("Green Scarf", 5, "S");
+        Clothing item3 = new Clothing("Blue T-Shirt", 10.5, "S");
+
+        Clothing[] items = {item0, item1, item2, item3};
 
         System.out.println("\nInventory:");
         for (Clothing item: items) {
             System.out.println(item.description + ", " + item.price + ", " + item.size);        
         }
         
-        int amountItem0 = 1, amountItem1 = 2;
-        int[] amounts = {amountItem0, amountItem1};
+        int amountItem0 = 1, amountItem1 = 2, amountItem2 = 0, amountItem3 = 1;
+        int[] amounts = {amountItem0, amountItem1, amountItem2, amountItem3};
         
         System.out.println("\nBasket:");
         for (int i = 0; i < items.length; i++) {
             System.out.println(amounts[i] + " x " + items[i].description + ", " + items[i].price + ", " + items[i].size);
         }
         
+        System.out.println("\nNotice:");
+        System.out.println("Only the items of the costumer's size will be checked out.");
+        
         //subtotal = amounts[0] * items[0].price + amounts[1] * items[1].price;
         //taxes = subtotal * tax;
         
         for (int i = 0; i < items.length; i++) {
-            double itemSubtotal = amounts[i] * items[i].price;
+            if (items[i].size == customer.size) {
+                double itemSubtotal = amounts[i] * items[i].price;
             
-            subtotal += itemSubtotal;
-            taxes += itemSubtotal * tax;
+                subtotal += itemSubtotal;
+                taxes += itemSubtotal * tax;
+            }
         }
         
         total = subtotal + taxes;
-        
+       
         System.out.println("\nSubtotal: " + subtotal);
         System.out.println("Taxes: " + taxes);
         System.out.println("------------------------");
