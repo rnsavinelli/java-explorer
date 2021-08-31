@@ -11,6 +11,7 @@ package rnsavinelli.explorer;
  */
 public class ShopApp {
     static String welcomeMessage = "Welcome to rnsavinelli.explorer.ShopApp!";    
+    static double tax = 0.2;
 
     private static void greet() {
         System.out.println(welcomeMessage);
@@ -47,43 +48,38 @@ public class ShopApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Customer c1 = new Customer("Pinky", 25, "S");
-        double totalPrice, finalPrice;        
-        double tax = 0.2;
-                
-        ///////////////////////////////////////////////////////////
-        
+        double subtotal, taxes, total;          
+        int measurement = 3;
+        Customer c1 = new Customer("Pinky", 25, getCustomerSizeFromMeasurement(measurement));
+           
         greet();
-        
-        ///////////////////////////////////////////////////////////
-        
-        System.out.println( "\nTax = " + tax + "\n");
-        
+                        
         Clothing item0 = new Clothing("Blue Jacket", 20.9, "M");
         Clothing item1 = new Clothing("Orange T-Shirt", 10.5, "S");
         
-        int amountItem0 = 1, amountItem1 = 2;
-        
         Clothing[] items = {item0, item1};
+
+        System.out.println("\nInventory:");
+        for (Clothing item: items) {
+            System.out.println(item.description + ", " + item.price + ", " + item.size);        
+        }
         
+        int amountItem0 = 1, amountItem1 = 2;
         int[] amounts = {amountItem0, amountItem1};
         
-        System.out.println(amounts[0] + " x " + items[0].description + ", " + items[0].price + ", " + items[0].size);
-        System.out.println(amounts[1] + " x " + items[1].description + ", " + items[1].price + ", " + items[1].size + "\n");
+        System.out.println("\nBasket:");
+        for (int i = 0; i < items.length; i++) {
+            System.out.println(amounts[i] + " x " + items[i].description + ", " + items[i].price + ", " + items[i].size);
+        }
         
-        totalPrice = amounts[0] * items[0].price + amounts[1] * items[1].price;
-        finalPrice = totalPrice * (1 + tax);
+        subtotal = amounts[0] * items[0].price + amounts[1] * items[1].price;
+        taxes = subtotal * (tax);
+        total = subtotal + taxes;
         
-        System.out.println("Total Price: " + totalPrice);        
-        System.out.println("Final Price: " + finalPrice);
-        
-        ///////////////////////////////////////////////////////////
-        
-        int measurement = 4;
-        
-        c1.size = getCustomerSizeFromMeasurement(measurement);   
-        
-        ///////////////////////////////////////////////////////////
+        System.out.println("\nSubtotal: " + subtotal);
+        System.out.println("Taxes: " + taxes);
+        System.out.println("------------------------");
+        System.out.println("Total: " + total);
     }
     
 }
