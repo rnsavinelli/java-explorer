@@ -65,19 +65,11 @@ public class ShopApp {
 
         Clothing[] items = {item0, item1, item2, item3};
 
-        System.out.println("\nInventory:");
+        System.out.println("\nBasket:");
         for (Clothing item: items) {
             System.out.println(item.description + ", " + item.price + ", " + item.size);        
         }
-        
-        int amountItem0 = 1, amountItem1 = 2, amountItem2 = 0, amountItem3 = 1;
-        int[] amounts = {amountItem0, amountItem1, amountItem2, amountItem3};
-        
-        System.out.println("\nBasket:");
-        for (int i = 0; i < items.length; i++) {
-            System.out.println(amounts[i] + " x " + items[i].description + ", " + items[i].price + ", " + items[i].size);
-        }
-        
+
         System.out.println("\nNotice:");
         System.out.println("Only the items of the costumer's size will be checked out.");
         
@@ -85,8 +77,8 @@ public class ShopApp {
         //taxes = subtotal * tax;
         
         for (int i = 0; i < items.length; i++) {
-            if (items[i].size == customer.size) {
-                double itemSubtotal = amounts[i] * items[i].price;
+            if (items[i].size.equals(customer.size)) {
+                double itemSubtotal = items[i].price;
             
                 subtotal += itemSubtotal;
                 taxes += itemSubtotal * tax;
